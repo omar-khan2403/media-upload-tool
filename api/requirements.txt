@@ -2,3 +2,7 @@ fastapi
 uvicorn
 pillow
 boto3
+sqlalchemy
+python-dotenv
+fastapi-pagination
+psycopg2
