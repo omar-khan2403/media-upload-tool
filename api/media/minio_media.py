@@ -1,6 +1,7 @@
 import logging
 import boto3
 from dotenv import load_dotenv
+import os
 from botocore.exceptions import ClientError
 
 
@@ -56,4 +57,11 @@ def create_presigned_url(bucket_name, object_name, expiration=3600):
     return response
 
 
-def gef_file()
+def gef_file():
+
+    return
+
+
+def delete_file():
+
+    return

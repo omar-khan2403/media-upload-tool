@@ -13,15 +13,15 @@ class User(Base):
     is_active = Column(Boolean, default=True)
 
 
-
-class Media(Base):
+class Map(Base):
     __tablename__ = "media"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
+    storage_name = Column(String, nullable=True)
     type = Column(String, index=True)
-    extension = Column(String, index=true)
-    size = Column(Integer)
+    extension = Column(String, index=true, nullable=True)
+    size = Column(Integer, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
     upload_dt = Column(TIMESTAMP)
 

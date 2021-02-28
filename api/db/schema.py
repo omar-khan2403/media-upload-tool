@@ -5,9 +5,11 @@ from pydantic import BaseModel
 class Media(BaseModel):
     id: int
     name: str
+    storage_name: str
     type: str
+    extension: str
+    size: int
     owner_id: int
-    
 
     class Config:
         orm_mode: True
