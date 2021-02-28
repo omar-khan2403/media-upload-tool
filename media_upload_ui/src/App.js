@@ -6,7 +6,9 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Map from './components/Map'
+import Map from './components/MapComponents/Map';
+import MapList from './components/MapList';
+import Upload from './components/Upload';
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route path='/map/:id' component={Map}/>
+          <Route path='/' component={MapList} />
+          <Route path='/map/:id' component={Map} />
+          <Route path='/upload' component={Upload} />
         </Switch>
       </Router>
     </div>
