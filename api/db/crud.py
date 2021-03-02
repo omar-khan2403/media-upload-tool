@@ -3,17 +3,17 @@ from sqlalchemy.orm import Session
 import models, schema
 
 
-def get_media_one(db: Session, media_id: int):
-    '''get one media metadata for display'''
+def get_map_one(db: Session, media_id: int):
+    '''get one map metadata for display'''
     return db.query(models.Media).filter(models.Media.id == media_id).first()
 
 
-def get_media(db: Session, skip: int = 0, limit: int = 100):
-    '''get all the media displayed for a user'''
+def get_maps(db: Session, skip: int = 0, limit: int = 100):
+    '''get all the maps displayed for a user'''
     return db.query(models.Media).offset(skip).limit(limit).all()
 
 
-def create_media(db: session, media: schema.Media):
+def create_map(db: session, media: schema.Media):
 
     db_media = models.Media(
         name=media.name, 
@@ -30,7 +30,7 @@ def create_media(db: session, media: schema.Media):
     return db_media
 
 
-def delete_media(db: Session, media_id: int):
-    '''delete a media file'''
+def delete_map(db: Session, media_id: int):
+    '''delete a map meta'''
 
     return 'Media Deleted'

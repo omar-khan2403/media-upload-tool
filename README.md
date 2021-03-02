@@ -2,7 +2,7 @@
 
 ## Front-end
 
-Written in VueJS with Vuex and VueRouter
+Written in ReactJS with Leaflet and ReactRouter
 
 ## API
 
