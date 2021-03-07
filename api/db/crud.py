@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-import models, schema
-
+import db.models as models
+import db.schema as schema
 
 def get_map_one(db: Session, media_id: int):
     '''get one map metadata for display'''
@@ -13,7 +13,7 @@ def get_maps(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Media).offset(skip).limit(limit).all()
 
 
-def create_map(db: session, media: schema.Media):
+def create_map(db: Session, media: schema.Media):
 
     db_media = models.Media(
         name=media.name, 

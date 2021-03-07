@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 import media.minio_media as minio_media
 
 from db import models, schema, crud
-from database import SessionLocal, engine
+from database import SessionLocal
 
 router = APIRouter()
 
@@ -52,9 +52,9 @@ def get_one(media_id: int, db: Session = Depends(get_db)):
 
     return media
 
-@route.delete("/{media_id}")
+@router.delete("/{media_id}")
 def delete_one(media_id: int, db: Session = Depends(get_db)):
     '''deletes a specific media file and metadata'''
-
+    response = crud.delete_one(db, media_id)
 
     return response

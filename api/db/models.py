@@ -20,7 +20,7 @@ class Map(Base):
     name = Column(String, unique=True, index=True)
     storage_name = Column(String, nullable=True)
     type = Column(String, index=True)
-    extension = Column(String, index=true, nullable=True)
+    extension = Column(String, index=True, nullable=True)
     size = Column(Integer, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
     upload_dt = Column(TIMESTAMP)

@@ -1,5 +1,5 @@
 # pull python image
-FROM python:3.8-slim
+FROM python:3.8
 
 # navigate to the app directory
 WORKDIR /app
