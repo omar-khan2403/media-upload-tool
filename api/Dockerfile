@@ -7,6 +7,7 @@ WORKDIR /app
 # copy the files from root into /app
 COPY . .
 
+RUN pip install --upgrade pip
 # install requirements for fast-api upload be
 RUN pip install -r requirements.txt
 

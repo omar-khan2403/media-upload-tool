@@ -1,6 +1,5 @@
 fastapi
 uvicorn
-pillow
 boto3
 sqlalchemy
 python-dotenv

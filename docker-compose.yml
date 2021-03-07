@@ -8,17 +8,6 @@ services:
             dockerfile: Dockerfile
         ports:
             - 8000:8000
-    
-    minio:
-        image: minio/minio:RELEASE.2021-01-16T02-19-44Z
-        ports:
-            - "9000:9000"
-        volumes:
-            - /Users/omarkhan/minio_data:/data
-        environment:
-            MINIO_ACCESS_KEY: Gochujang2403
-            MINIO_SECRET_KEY: Tonkotsu2403
-        command: server --address 0.0.0.0:9000 /data
 
     db:
         image: postgres
