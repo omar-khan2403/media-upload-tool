@@ -1,15 +1,17 @@
 from typing import List, Optional
+from datetime import datetime
 from pydantic import BaseModel
 
 
-class Media(BaseModel):
-    id: int
+class Map(BaseModel):
+    map_id: int
     name: str
+    filename: str
     storage_name: str
-    type: str
-    extension: str
+    filetype: str
     size: int
-    owner_id: int
+    owner_id: Optional[int]
+    upload_dt: datetime
 
     class Config:
         orm_mode: True

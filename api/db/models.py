@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, TIMESTAMP
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
 
 from database import Base
 
@@ -14,14 +14,14 @@ class User(Base):
 
 
 class Map(Base):
-    __tablename__ = "media"
+    __tablename__ = "maps"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    storage_name = Column(String, nullable=True)
-    type = Column(String, index=True)
-    extension = Column(String, index=True, nullable=True)
-    size = Column(Integer, nullable=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
-    upload_dt = Column(TIMESTAMP)
+    map_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=False)
+    filename = Column(String, nullable=False)
+    storage_name = Column(String, nullable=False)
+    filetype = Column(String, index=False)
+    size = Column(Integer, nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    upload_dt = Column(DateTime, nullable=False)
 

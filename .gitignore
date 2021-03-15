@@ -2,6 +2,7 @@
 
 database.env
 api/.env
+__pycache__/
 
 # ignore react node modules
 

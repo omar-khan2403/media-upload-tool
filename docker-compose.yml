@@ -6,6 +6,8 @@ services:
         build:
             context: ./api
             dockerfile: Dockerfile
+        volumes:
+            - ./api:/app
         ports:
             - 8000:8000
         depends_on:
@@ -18,7 +20,8 @@ services:
         env_file:
             - database.env # configure postgres
         volumes:
-            - /Users/omarkhan/postgres_data:/var/lib/postgresql/data/
+            - /home/pi/data/postgres_data:/var/lib/postgresql/data/
+
         
 
 
