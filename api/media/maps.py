@@ -1,8 +1,8 @@
-import pandas_lite as pd
+import pandas as pd
 
-def check_excel(xl_file):
+def check_csv(csv_file):
 
-    df = pd.read_excel(xl_file)
+    df = pd.read_csv(csv_file)
 
     # check df columns to see if there is longitude and latitude
     required = ['longitude', 'latitude']
@@ -15,7 +15,7 @@ def check_excel(xl_file):
         return False
 
 
-def read_excel(xl_file):
+def read_csv(csv_file):
 
     metadata = None
 

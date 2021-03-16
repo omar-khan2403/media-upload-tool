@@ -2,8 +2,7 @@ fastapi
 uvicorn
 python-multipart
 boto3
-pandas-lite
-bottleneck
+pandas
 sqlalchemy
 psycopg2
 python-dotenv

@@ -25,10 +25,6 @@ def upload_file(file_name, bucket, file=None):
     :return: True if file was uploaded, else False
     """
 
-    # If S3 object_name was not specified, use file_name
-    if object_name is None:
-        object_name = file_name
-
     # Upload the file
     s3_client = boto3.client(
         's3', 
@@ -38,7 +34,7 @@ def upload_file(file_name, bucket, file=None):
         config=Config(signature_version='s3v4')
     )
     try:
-        response = s3_client.put_object(Body=file, Bucket=bucket, Key=object_name)
+        response = s3_client.put_object(Body=file, Bucket=bucket, Key=file_name)
     except ClientError as e:
         logging.error(e)
         return False

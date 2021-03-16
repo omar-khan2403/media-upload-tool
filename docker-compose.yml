@@ -10,17 +10,16 @@ services:
             - ./api:/app
         ports:
             - 8000:8000
-        depends_on:
-            - db
-
-    db:
-        image: postgres
+    
+    pgadmin:
+        container_name: pgadmin
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+            PGADMIN_DEFAULT_PASSWORD: admin
         ports:
-            - "2345:5432"
-        env_file:
-            - database.env # configure postgres
-        volumes:
-            - /home/pi/data/postgres_data:/var/lib/postgresql/data/
+            - 8080:80
+        
 
         
 

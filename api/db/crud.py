@@ -5,7 +5,7 @@ import db.schema as schema
 
 def get_map_one(db: Session, map_id: int):
     '''get one map metadata for display'''
-    return db.query(models.Media).filter(models.Map.map_id == map_id).first()
+    return db.query(models.Map).filter(models.Map.map_id == map_id).first()
 
 
 def get_maps(db: Session, skip: int = 0, limit: int = 100):
@@ -17,10 +17,11 @@ def create_map(db: Session, media: schema.Map):
 
     db_media = models.Map(
         name=media.name,
-        filename=media.filename
+        filename=media.filename,
         filetype=media.filetype, 
+        storage_name=media.storage_name,
         size=media.size,
-        owner_id=media.owner_id
+        owner_id=media.owner_id,
         upload_dt=media.upload_dt
         )
 
