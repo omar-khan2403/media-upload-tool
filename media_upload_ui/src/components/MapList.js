@@ -9,9 +9,10 @@ export default class MapList extends React.Component {
     }
     
     componentDidMount() {
-        API.get(`/maps`)
+        API.get(`/api/map/?skip=0&limit=100`)
           .then(res => {
             const maps = res.data;
+            console.log(maps);
             this.setState({ maps });
           })
       }

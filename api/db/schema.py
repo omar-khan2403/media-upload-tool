@@ -27,12 +27,17 @@ class Map(BaseModel):
     class Config:
         orm_mode: True
 
-class User(BaseModel):
-    id: int
+
+class UserIn(BaseModel):
     name: str
     email: str
-    password: str
-    is_active: bool
+
+    class Config:
+        orm_mode: True
+
+
+class User(UserIn):
+    u_id: int
 
     class Config:
         orm_mode: True

@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, File, UploadFile, Form, HTTPException
-from pydantic import BaseModel
 from sqlalchemy.orm import Session
 import media.minio_media as minio_media
 import media.maps as maps
@@ -33,8 +32,21 @@ async def get_maps(skip: int= 0, limit: int=100, db: Session = Depends(get_db)):
     return media
 
 
+@router.get("/{user_id}")
+async def get_user_maps(skip: int=0, limit: int=100, db: Session = Depends(get_db)):
+
+    media = crud.get_user_maps(db, skip, limit)
+
+    return media
+
+
 @router.post("/")
-async def upload_map(file: UploadFile = File(...), name: str = Form(None), db: Session = Depends(get_db)):
+async def upload_map(
+    file: UploadFile = File(...), 
+    name: str = Form(None), 
+    user_id: int = Form(None), 
+    db: Session = Depends(get_db)
+    ):
     '''uploads media metadata to DB and file to minIO container'''
 
     map_file = file.file
@@ -64,6 +76,7 @@ async def upload_map(file: UploadFile = File(...), name: str = Form(None), db: S
         'upload_dt': datetime.utcnow(),
         'filetype': filetype,
         'size': size,
+        'owner_id': user_id
     }
 
     map_schema = schema.MapIn(**map_dict)
@@ -80,6 +93,9 @@ async def get_one(map_id: int, db: Session = Depends(get_db)):
     map = crud.get_map_one(db, map_id)
 
     # if meta is not a link, get presigned url 
+    if map is None:
+        raise HTTPException(status_code=404, detail="Map not found.")
+
     url = minio_media.create_presigned_url(bucket, map.storage_name)
 
     print(url)

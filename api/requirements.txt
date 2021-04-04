@@ -4,6 +4,8 @@ python-multipart
 boto3
 pandas
 sqlalchemy
+google-auth
+requests
 psycopg2
 python-dotenv
 fastapi-pagination
